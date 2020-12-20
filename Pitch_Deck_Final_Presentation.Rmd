@@ -1,10 +1,9 @@
 
 
 ---
-title: "Course Final Project -               Pitch Presentation"
+title: "Course Final Project"
 author: "Jason Mestrits"
 date: "12/20/2020"
-
 output:
   ioslides_presentation: default
   html_document:
@@ -20,29 +19,84 @@ subtitle: Developing Data Products - Johns Hopkins Coursera
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+
+library(shiny)
+library(shinydashboard)
+library(tidyverse)
+
+  #  dice_num <- as.numeric(input$dice)
+    dice_num <- 3  #manually inputting a value, but in the app this would be dynamic
+
+       ifelse(dice_num == 2, odds_pair <- 6, 
+           ifelse(dice_num == 3, odds_pair <- 96,
+                  ifelse(dice_num == 4, odds_pair <- 936, odds_pair <- 7056
+                  )
+           )
+    )
+    
+    ifelse(dice_num == 2, odds_nopair <- 30, 
+           ifelse(dice_num == 3, odds_nopair <- 120,
+                  ifelse(dice_num == 4, odds_nopair <- 360, odds_pair <- 720
+                  )
+           )
+    )
+    
+    data1 = data.frame(Outcome = c("Pair", "No_Pair"), Outcomes = c(odds_pair,odds_nopair))
+    data1 <- data1 %>% mutate(Odds = " ")
+    
+
+    
+    
 ```
 
-## R Markdown
+## Intro - My Shiny App
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This R Markdown presentation is part of the deliverable for my course project, which is the final assignment in the Johns Hopkins - Developing Data Products Coursera course.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+My ui.R and server.R files for my shiny app are available on github and can be located in the "course_project" folder at <https://github.com/mestrits/Rshiny_finalproject>
 
-## Slide with Bullets
+The following slides will give a brief overview of the functionality in the app.
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
 
-## Slide with R Output
+## Dice Odds Calculator
+
+This shiny app helps you understand the odds of rolling a pair, depending on the number of dice that are are rolled.
+
+- Select the tab in the left hand nav, depending if you want to see the odds or the probability.
+- Select the number of dice you would want to roll (2,3,4 or 5) from the drop down
+- Observe the responsive chart and text that will update with your selection.
+
+It is worth noting that i didn't finish building out the probability tab... as I would like to watch some football today and my assignment is due.  However, you can see that i could easily update the same script to represent a probability (which is the fraction of the total outcomes on a 0-1 or 0-100% scale.  Odds on the other hand, are based on the number of outcomes) 
+
+## R expression evaluation
+Here is a sample calculation to show how i created a data table based on the input value from the app (ie. the # of dice rolled).  I use this table to help construct the stacked barplot viz.
 
 ```{r cars, echo = TRUE}
-summary(cars)
+
+    data1 = data.frame(Outcome = c("Pair", "No_Pair"),
+            Outcomes = c(odds_pair,odds_nopair))
+    data1 <- data1 %>% mutate(Odds = " ")
+    
+    head(data1)
 ```
 
-## Slide with Plot
+## Stacked BarPlot
 
 ```{r pressure}
-plot(pressure)
+
+    data1 = data.frame(Outcome = c("Pair", "No_Pair"),
+            Outcomes = c(odds_pair,odds_nopair))
+    data1 <- data1 %>% mutate(Odds = " ")
+    
+ggplot(data1, aes(x = Odds, y = Outcomes, fill = Outcome) ) +
+            geom_col() +
+            geom_text(aes(label = paste0(Outcomes, " possible outcomes")),
+                      position = position_stack(vjust = 0.5)) +
+            scale_fill_brewer(palette = "Blues") +
+            theme_minimal(base_size = 16) +
+            ylab("Outcomes")+
+            xlab(" " )
+
 ```
 
