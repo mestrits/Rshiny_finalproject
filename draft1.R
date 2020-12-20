@@ -109,28 +109,6 @@ server <- function(input, output){
   
 }
   
-##  
-  # odds_pair = 7056
-  # odds_nopair = 720
-  # 
-  # data1 = data.frame(Outcome = c("Pair", "No_Pair"), Outcomes = c(odds_pair,odds_nopair))
-  # 
-  # data1 <- data1 %>% mutate(Odds = " ")
-  # 
-  # 
-  # 
-  # ggplot(data1, aes(x = Odds, y = Outcomes, fill = outcome) ) +
-  #   geom_col() +
-  #   geom_text(aes(label = paste0(Outcomes, " possible outcomes")),
-  #             position = position_stack(vjust = 0.5)) +
-  #   scale_fill_brewer(palette = "Blues") +
-  #   theme_minimal(base_size = 16) +
-  #   ylab("Outcomes")+
-  #   xlab(" " )
-  # 
-  # z <- endz
-##  
-  
 
 
 
