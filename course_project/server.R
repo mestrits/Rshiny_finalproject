@@ -8,16 +8,12 @@
 #
 
 library(shiny)
-library(datasets)
+library(shinydashboard)
+library(tidyverse)
 
 # Define server logic required to summarize and view the selected dataset
 shinyServer(function(input, output){
         output$bar_plot <- renderPlot({
-            #    Yes_Pair <- as.numeric(input$dice)
-            #    No_Pair <- as.numeric(input$dice)
-            #    No_Pair <- No_Pair - 1
-            #    barplot(Yes_Pair, 
-            #            xlab = "Odds of tossing a pair", ylab = "Pineapples")
             
             dice_num <- as.numeric(input$dice)
             
