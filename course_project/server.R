@@ -26,7 +26,7 @@ shinyServer(function(input, output){
             
             ifelse(dice_num == 2, odds_nopair <- 30, 
                    ifelse(dice_num == 3, odds_nopair <- 120,
-                          ifelse(dice_num == 4, odds_nopair <- 360, odds_pair <- 720
+                          ifelse(dice_num == 4, odds_nopair <- 360, odds_nopair <- 720
                           )
                    )
             )
@@ -37,7 +37,7 @@ shinyServer(function(input, output){
             
             data1 <- data1 %>% mutate(Odds = " ")
             
-            ggplot(data1, aes(x = Odds, y = Outcomes, fill = outcome) ) +
+            ggplot(data1, aes(x = Odds, y = Outcomes, fill = Outcome) ) +
                 geom_col() +
                 geom_text(aes(label = paste0(Outcomes, " possible outcomes")),
                           position = position_stack(vjust = 0.5)) +
@@ -65,7 +65,7 @@ shinyServer(function(input, output){
             dice_num <- as.numeric(input$dice)
             ifelse(dice_num == 2, odds_nopair <- 30, 
                    ifelse(dice_num == 3, odds_nopair <- 120,
-                          ifelse(dice_num == 4, odds_nopair <- 360, odds_pair <- 720
+                          ifelse(dice_num == 4, odds_nopair <- 360, odds_nopair <- 720
                           )      )     )
             odds_nopair
         })

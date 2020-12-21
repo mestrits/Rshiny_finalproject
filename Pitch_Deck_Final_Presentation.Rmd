@@ -61,9 +61,7 @@ This presentation is published at <https://rpubs.com/mestrits/DDP_wk4>
 
 The shiny app can be found at <https://maestroman.shinyapps.io/Shiny_course_project/>
 
-FYI - i had a slick stacked barplot that auto updated with the dynamic input... and it works fine locally but is rendering with an error when hosted on shinyapps.io
-Given, that you can still see the text updating, i'm going to submit and trouble shoot further later, however it WAS pretty slick (at least locally)... 
-you can see a static version rendered in slide 5
+
 
 
 
@@ -76,7 +74,7 @@ This shiny app helps you understand the odds of rolling a pair, depending on the
 - Select the number of dice you would want to roll (2,3,4 or 5) from the drop down
 - Observe the responsive chart and text that will update with your selection.
 
-FYI - i didn't finish building out the 2nd tab... as I've spent extra cycles trying to figure out my app works locally but i am getting an error when hosting the app at Shinyapps.io.  However, you can see the intent, which is that i could update to have a seperate tab for probability calculation (which is the fraction of the total outcomes on a 0-1 or 0-100% scale.  Odds on the other hand, are based on the number of outcomes) 
+FYI - i didn't finish building out the 2nd tab...  However, you can see the intent, which is that i could update my script to have a seperate tab for a probability calculation, (which is the fraction of the total outcomes on a 0-1 or 0-100% scale.  Odds on the other hand, are based on the number of outcomes). 
 
 ## R expression evaluation
 Here is a sample calculation to show how i created a data table based on the input value from the app (ie. the # of dice rolled).  I use this table to help construct the stacked barplot viz.
